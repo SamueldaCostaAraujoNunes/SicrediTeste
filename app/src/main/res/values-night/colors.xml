@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorErrorContainer">@color/m3_sys_color_dark_error_container</color>
+    <color name="colorOnErrorContainer">@color/m3_sys_color_dark_on_error_container</color>
+</resources>

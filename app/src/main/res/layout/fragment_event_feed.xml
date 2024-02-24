@@ -12,12 +12,12 @@
         android:id="@+id/tv_network_state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffdd00"
+        android:background="@color/colorErrorContainer"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
         android:text="@string/without_network"
-        android:textColor="#000000"
+        android:textColor="@color/colorOnErrorContainer"
         android:visibility="gone"
         tools:visibility="visible" />
 
