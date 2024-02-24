@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/EventDetailsFragment"
-        android:name="samuelnunes.com.sicrediteste.presentation.screens.EventDetailsFragment"
+        android:name="samuelnunes.com.sicrediteste.presentation.screens.eventDetails.EventDetailsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_event_detail">
 

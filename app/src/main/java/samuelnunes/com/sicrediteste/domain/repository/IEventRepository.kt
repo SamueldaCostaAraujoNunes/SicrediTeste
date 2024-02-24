@@ -6,4 +6,5 @@ import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 
 interface IEventRepository {
     fun getAllEvents(): Flow<Resource<List<EventEntity>>>
+    fun getEvent(eventId: String): Flow<Resource<EventEntity>>
 }

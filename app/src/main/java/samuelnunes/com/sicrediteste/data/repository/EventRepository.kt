@@ -21,7 +21,15 @@ class EventRepository @Inject constructor(
             { dao.getAllEvents() },
             { api.getAllEvents() },
             { dao.insertOrUpdate(it) },
-            { result -> result.map { it.toEntity() }}
+            { result -> result.map { it.toEntity() } }
+        )
+
+    override fun getEvent(eventId: String): Flow<Resource<EventEntity>> =
+        networkBoundResource(
+            { dao.getEvent(eventId) },
+            { api.getEvent(eventId) },
+            { dao.insertOrUpdate(it) },
+            { it.toEntity() }
         )
 
 }

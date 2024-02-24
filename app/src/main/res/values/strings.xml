@@ -44,4 +44,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="without_network">Sem Conexão!!</string>
+    <string name="trace_route">Traçar rota</string>
+    <string name="add_to_calendar">Add ao calendario</string>
 </resources>

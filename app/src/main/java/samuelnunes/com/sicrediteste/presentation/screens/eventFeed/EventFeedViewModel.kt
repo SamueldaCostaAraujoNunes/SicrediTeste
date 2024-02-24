@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.domain.repository.IEventRepository
+import samuelnunes.com.sicrediteste.presentation.commons.collectLoading
 import javax.inject.Inject
 
 
@@ -64,7 +65,7 @@ class EventFeedViewModel @Inject constructor(
 
     fun fetchEvents() {
         viewModelScope.launch {
-            repository.getAllEvents().collectLoading { result ->
+            repository.getAllEvents().collectLoading(_loading) { result ->
                 when (result) {
                     is Resource.Success -> {
                         _events.value = result.data!!

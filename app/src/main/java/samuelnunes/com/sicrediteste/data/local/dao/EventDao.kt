@@ -14,4 +14,7 @@ interface EventDao : BaseDao<EventEntity> {
     @Query("SELECT * FROM EventEntity")
     fun getAllEvents(): Flow<List<EventEntity>>
 
+    @Query("SELECT * FROM EventEntity WHERE id=:eventId")
+    fun getEvent(eventId: String): Flow<EventEntity>
+
 }

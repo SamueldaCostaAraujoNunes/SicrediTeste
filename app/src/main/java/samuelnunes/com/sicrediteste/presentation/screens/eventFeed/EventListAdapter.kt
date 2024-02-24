@@ -1,4 +1,4 @@
-package samuelnunes.com.sicrediteste.presentation.screens
+package samuelnunes.com.sicrediteste.presentation.screens.eventFeed
 
 import android.view.View.GONE
 import android.view.ViewGroup
@@ -9,6 +9,7 @@ import coil.load
 import com.samuelnunes.utility_tool_kit.extensions.inflater
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.databinding.EventItemListBinding
+import timber.log.Timber
 
 internal class EventListAdapter(private val onEventClick: (EventEntity) -> Unit) :
     ListAdapter<EventEntity, EventListAdapter.EventViewHolder>(BreedItemCallback) {
@@ -29,7 +30,10 @@ internal class EventListAdapter(private val onEventClick: (EventEntity) -> Unit)
                 }
                 ivEvent.load(item.image) {
                     listener(
-                        onError = { _, _ -> ivEvent.visibility = GONE }
+                        onError = { _ , result ->
+                            Timber.e(result.throwable, "Erro ao carregar imagem: ${item.image}")
+                            ivEvent.visibility = GONE
+                        }
                     )
                 }
                 tvTitle.text = item.title

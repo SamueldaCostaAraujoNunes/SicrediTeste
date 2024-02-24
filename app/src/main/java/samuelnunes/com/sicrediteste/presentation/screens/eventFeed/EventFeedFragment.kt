@@ -11,7 +11,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.samuelnunes.utility_tool_kit.binding.goneIf
 import dagger.hilt.android.AndroidEntryPoint
 import samuelnunes.com.sicrediteste.databinding.FragmentEventFeedBinding
-import samuelnunes.com.sicrediteste.presentation.screens.EventListAdapter
 
 @AndroidEntryPoint
 class EventFeedFragment : Fragment() {
