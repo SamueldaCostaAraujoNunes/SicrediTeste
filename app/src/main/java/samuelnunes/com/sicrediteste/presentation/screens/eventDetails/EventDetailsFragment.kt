@@ -11,10 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.databinding.FragmentEventDetailBinding
 import timber.log.Timber
+
 
 @AndroidEntryPoint
 class EventDetailsFragment : Fragment() {
@@ -46,7 +48,10 @@ class EventDetailsFragment : Fragment() {
                 }
                 tvDescription.text = it.description
                 btnChecking.setOnClickListener { _ ->
-                    val direction = EventDetailsFragmentDirections.actionEventDetailsFragmentToEventCheckinDialog(it.id)
+                    val direction =
+                        EventDetailsFragmentDirections.actionEventDetailsFragmentToEventCheckinDialog(
+                            it.id
+                        )
                     findNavController().navigate(direction)
                 }
                 btnTraceRoute.setOnClickListener { _ ->
@@ -56,10 +61,21 @@ class EventDetailsFragment : Fragment() {
                 btnAddToCalendar.setOnClickListener { _ ->
                     startActivity(it.getCreateEventIntent())
                 }
+                fab.setOnClickListener { _ ->
+                    startActivity(Intent.createChooser(it.shareEventIntent(), "Compartilhar texto via"))
+                }
+            }
+
+            viewModel.hasNetwork.observe(viewLifecycleOwner) {
+                binding.btnChecking.isEnabled = it
+                if (!it) Snackbar.make(
+                    binding.root,
+                    samuelnunes.com.sicrediteste.R.string.without_network,
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }
-
 
     private fun EventEntity.getLocationIntent(): Intent = Intent(Intent.ACTION_VIEW,
         Uri.parse(buildString {
@@ -81,6 +97,18 @@ class EventDetailsFragment : Fragment() {
         putExtra("beginTime", date)
         putExtra("eventLocation", "$latitude, $longitude")
     }
+
+    private fun EventEntity.shareEventIntent(): Intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, buildString {
+            append(title)
+            append("\n\n")
+            append(description)
+            append("\n")
+            append("Localização: $latitude, $longitude")
+        });
+    }
+
 
 
 }

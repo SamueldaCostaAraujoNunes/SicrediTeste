@@ -13,11 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorErrorContainer"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:textColor="@color/colorOnErrorContainer"
+        android:textAlignment="center"
         android:padding="16dp"
         android:text="@string/without_network"
-        android:textColor="@color/colorOnErrorContainer"
         android:visibility="gone"
         tools:visibility="visible" />
 

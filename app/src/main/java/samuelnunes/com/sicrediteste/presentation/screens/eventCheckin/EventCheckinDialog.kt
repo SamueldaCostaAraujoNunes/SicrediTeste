@@ -64,6 +64,11 @@ class EventCheckinDialog: BottomSheetDialogBase() {
         viewModel.loading.observe(viewLifecycleOwner) {
             binding.lpiLoading.visibleIf(it)
         }
+
+        viewModel.hasNetwork.observe(viewLifecycleOwner) {
+            binding.btnConfirmCheckin.isEnabled = it
+            if(!it) Snackbar.make(binding.root, R.string.without_network, Snackbar.LENGTH_SHORT).onTop().show()
+        }
     }
 
     private fun Snackbar.onTop(): Snackbar {

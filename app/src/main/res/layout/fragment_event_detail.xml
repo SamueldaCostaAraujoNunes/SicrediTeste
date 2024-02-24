@@ -1,68 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.screens.eventDetails.EventDetailsFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Media -->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="16dp"
-            android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
-            tools:text="@tools:sample/lorem" />
-
-        <!-- Buttons -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingVertical="8dp"
-            android:paddingHorizontal="16dp">
+            android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_checking"
-                style="?attr/materialIconButtonFilledStyle"
+            <!-- Media -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/checkin"
-                app:icon="@drawable/twotone_check_24" />
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside" />
 
-            <com.google.android.material.button.MaterialButton
-                style="?attr/materialIconButtonFilledTonalStyle"
-                android:id="@+id/btn_trace_route"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary"
+                tools:text="@tools:sample/lorem" />
+
+            <!-- Buttons -->
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/twotone_directions_24"
-                android:text="@string/trace_route" />
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
 
-            <com.google.android.material.button.MaterialButton
-                style="?attr/materialIconButtonFilledTonalStyle"
-                android:id="@+id/btn_add_to_calendar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/twotone_calendar_month_24"
-                android:text="@string/add_to_calendar" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_checking"
+                    style="?attr/materialIconButtonFilledStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/checkin"
+                    app:icon="@drawable/twotone_check_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_trace_route"
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trace_route"
+                    app:icon="@drawable/twotone_directions_24" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_to_calendar"
+                    style="?attr/materialIconButtonFilledTonalStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_to_calendar"
+                    app:icon="@drawable/twotone_calendar_month_24" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/event_share"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

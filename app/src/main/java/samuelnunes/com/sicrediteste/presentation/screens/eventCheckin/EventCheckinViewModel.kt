@@ -1,5 +1,6 @@
 package samuelnunes.com.sicrediteste.presentation.screens.eventCheckin
 
+import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.samuelnunes.utility_tool_kit.domain.Resource
 import com.samuelnunes.utility_tool_kit.events.LiveEvent
 import com.samuelnunes.utility_tool_kit.events.MutableLiveEvent
 import com.samuelnunes.utility_tool_kit.network.HttpStatusCode
+import com.samuelnunes.utility_tool_kit.network.NetworkConnectivityObserver
 import com.samuelnunes.utility_tool_kit.utils.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,19 +21,36 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EventCheckinViewModel @Inject constructor(
-    private var repository: IEventRepository
+    private var repository: IEventRepository,
+    private var networkConnectivityObserver: NetworkConnectivityObserver
 ) : ViewModel() {
 
     private val _loading: MutableLiveData<Boolean> = MutableLiveData(false)
     private val _error: MutableLiveData<UiText> = MutableLiveData()
     private val _event: MutableLiveEvent<Boolean> = MutableLiveEvent()
+    private val _networkConnectivity: MutableLiveData<Boolean> = MutableLiveData()
 
+    val hasNetwork: LiveData<Boolean>
+        get() = _networkConnectivity
     val loading: LiveData<Boolean>
         get() = _loading
     val error: LiveData<UiText>
         get() = _error
     val event: LiveEvent<Boolean>
         get() = _event
+
+    init {
+        viewModelScope.launch {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                networkConnectivityObserver.observe().collect { status ->
+                    val hasConnection = status.hasConnection()
+                    _networkConnectivity.value = hasConnection
+                }
+            } else {
+                _networkConnectivity.value = true
+            }
+        }
+    }
 
     fun eventCheckin(eventId: String, customerName: String, customerEmail: String) {
         viewModelScope.launch {

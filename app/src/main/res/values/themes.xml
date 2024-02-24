@@ -1,4 +1,9 @@
 <resources>
-    <style name="Base.Theme.SicrediTeste" parent="Theme.Material3.DayNight.NoActionBar"/>
-    <style name="Theme.SicrediTeste" parent="Base.Theme.SicrediTeste" />
+    <style name="Base.Theme.SicrediTeste" parent="Theme.Material3.DynamicColors.DayNight"/>
+
+    <style name="Theme.SicrediTeste" parent="Base.Theme.SicrediTeste">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
