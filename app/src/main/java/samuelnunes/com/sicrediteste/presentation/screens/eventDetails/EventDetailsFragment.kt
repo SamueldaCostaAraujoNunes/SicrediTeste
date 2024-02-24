@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,8 +44,11 @@ class EventDetailsFragment : Fragment() {
                         }
                     )
                 }
-                tvTitle.text = it.title
                 tvDescription.text = it.description
+                btnChecking.setOnClickListener { _ ->
+                    val direction = EventDetailsFragmentDirections.actionEventDetailsFragmentToEventCheckinDialog(it.id)
+                    findNavController().navigate(direction)
+                }
                 btnTraceRoute.setOnClickListener { _ ->
                     startActivity(it.getLocationIntent())
                 }

@@ -8,6 +8,7 @@ import samuelnunes.com.sicrediteste.data.local.dao.EventDao
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.data.mappers.toEntity
 import samuelnunes.com.sicrediteste.data.remote.EventsApi
+import samuelnunes.com.sicrediteste.data.remote.dto.request.CheckinModelRequest
 import samuelnunes.com.sicrediteste.domain.repository.IEventRepository
 import javax.inject.Inject
 
@@ -31,5 +32,7 @@ class EventRepository @Inject constructor(
             { dao.insertOrUpdate(it) },
             { it.toEntity() }
         )
+
+    override suspend fun eventCheckin(body: CheckinModelRequest): Resource<Any> = api.eventCheckin(body)
 
 }

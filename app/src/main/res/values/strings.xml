@@ -2,8 +2,9 @@
     <string name="app_name">SicrediTeste</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Feed de Eventos</string>
-    <string name="second_fragment_label">Detalhes</string>
+    <string name="feed_fragment_label">Feed de Eventos</string>
+    <string name="detail_fragment_label">{label}</string>
+    <string name="checkin_fragment_label">Checkin</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -45,5 +46,14 @@
     </string>
     <string name="without_network">Sem Conexão!!</string>
     <string name="trace_route">Traçar rota</string>
-    <string name="add_to_calendar">Add ao calendario</string>
+    <string name="checkin">Realizar Check-in</string>
+    <string name="add_to_calendar">Adicionar ao calendario</string>
+    <string name="default_error_message">Este campo é obrigatório</string>
+    <string name="text_empty_error_message">Este campo não pode estar vazio</string>
+    <string name="email_error_message">O e-mail digitado é considerado inválido</string>
+    <string name="name_error_message">O nome digitado é considerado inválido</string>
+    <string name="network_error">Serviço fora do ar, tente novamente mais tarde!</string>
+    <string name="too_many_requests_error">Excesso de tentativas, tente novamente mais tarde!</string>
+    <string name="default_error">Ops! Ocorreu um erro inesperado, tente novamente mais tarde!</string>
+    <string name="checkin_success">Check-in realizado com sucesso!</string>
 </resources>

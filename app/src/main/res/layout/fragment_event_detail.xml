@@ -12,47 +12,54 @@
         android:orientation="vertical">
 
         <!-- Media -->
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:scaleType="centerInside"/>
+            android:scaleType="centerInside" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:text="@tools:sample/lorem" />
+
+        <!-- Buttons -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="16dp">
 
-            <!-- Title, secondary and supporting text -->
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                tools:text="@tools:sample/full_names" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_description"
-                android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_checking"
+                style="?attr/materialIconButtonFilledStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                tools:text="@tools:sample/lorem"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="?android:attr/textColorSecondary" />
+                android:text="@string/checkin"
+                app:icon="@drawable/twotone_check_24" />
 
-            <!-- Buttons -->
             <com.google.android.material.button.MaterialButton
+                style="?attr/materialIconButtonFilledTonalStyle"
                 android:id="@+id/btn_trace_route"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:icon="@drawable/twotone_directions_24"
                 android:text="@string/trace_route" />
 
             <com.google.android.material.button.MaterialButton
+                style="?attr/materialIconButtonFilledTonalStyle"
                 android:id="@+id/btn_add_to_calendar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:icon="@drawable/twotone_calendar_month_24"
                 android:text="@string/add_to_calendar" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

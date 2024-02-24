@@ -3,7 +3,7 @@ package samuelnunes.com.sicrediteste.data.remote.dto.response
 
 import com.google.gson.annotations.SerializedName
 
-data class EventsBodyModel(
+data class EventsModelResponse(
     @SerializedName("date")
     val date: Long? = null,
     @SerializedName("description")

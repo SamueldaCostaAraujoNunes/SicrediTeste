@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/EventFeedFragment"
         android:name="samuelnunes.com.sicrediteste.presentation.screens.eventFeed.EventFeedFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/feed_fragment_label"
         tools:layout="@layout/fragment_event_feed">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/EventDetailsFragment"
         android:name="samuelnunes.com.sicrediteste.presentation.screens.eventDetails.EventDetailsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/detail_fragment_label"
         tools:layout="@layout/fragment_event_detail">
 
         <argument
@@ -26,5 +26,27 @@
             app:argType="string"
             app:nullable="false"/>
 
+        <argument
+            android:name="label"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_EventDetailsFragment_to_eventCheckinDialog"
+            app:destination="@id/eventCheckinDialog" />
+
     </fragment>
+
+    <dialog
+        android:id="@+id/eventCheckinDialog"
+        android:name="samuelnunes.com.sicrediteste.presentation.screens.eventCheckin.EventCheckinDialog"
+        android:label="@string/checkin_fragment_label"
+        tools:layout="@layout/dialog_fragment_event_checkin">
+
+        <argument
+            android:name="eventId"
+            app:argType="string"
+            app:nullable="false"/>
+
+    </dialog>
+
 </navigation>

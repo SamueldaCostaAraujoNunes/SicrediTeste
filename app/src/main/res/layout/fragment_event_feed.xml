@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="samuelnunes.com.sicrediteste.presentation.screens.eventFeed.EventFeedFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_network_state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
