@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/EventFeedFragment">
+
+    <fragment
+        android:id="@+id/EventFeedFragment"
+        android:name="samuelnunes.com.sicrediteste.presentation.screens.eventFeed.EventFeedFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_event_feed">
+
+        <action
+            android:id="@+id/action_EventFeedFragment_to_EventDetailsFragment"
+            app:destination="@id/EventDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EventDetailsFragment"
+        android:name="samuelnunes.com.sicrediteste.presentation.screens.EventDetailsFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_event_detail">
+
+        <argument
+            android:name="eventId"
+            app:argType="string"
+            app:nullable="false"/>
+
+    </fragment>
+</navigation>
