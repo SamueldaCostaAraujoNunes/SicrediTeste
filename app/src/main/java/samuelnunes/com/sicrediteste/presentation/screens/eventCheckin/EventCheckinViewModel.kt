@@ -21,36 +21,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EventCheckinViewModel @Inject constructor(
-    private var repository: IEventRepository,
-    private var networkConnectivityObserver: NetworkConnectivityObserver
+    private var repository: IEventRepository
 ) : ViewModel() {
 
     private val _loading: MutableLiveData<Boolean> = MutableLiveData(false)
     private val _error: MutableLiveData<UiText> = MutableLiveData()
     private val _event: MutableLiveEvent<Boolean> = MutableLiveEvent()
-    private val _networkConnectivity: MutableLiveData<Boolean> = MutableLiveData()
 
-    val hasNetwork: LiveData<Boolean>
-        get() = _networkConnectivity
     val loading: LiveData<Boolean>
         get() = _loading
     val error: LiveData<UiText>
         get() = _error
     val event: LiveEvent<Boolean>
         get() = _event
-
-    init {
-        viewModelScope.launch {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                networkConnectivityObserver.observe().collect { status ->
-                    val hasConnection = status.hasConnection()
-                    _networkConnectivity.value = hasConnection
-                }
-            } else {
-                _networkConnectivity.value = true
-            }
-        }
-    }
 
     fun eventCheckin(eventId: String, customerName: String, customerEmail: String) {
         viewModelScope.launch {

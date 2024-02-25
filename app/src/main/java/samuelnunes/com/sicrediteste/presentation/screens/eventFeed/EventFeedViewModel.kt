@@ -29,7 +29,6 @@ class EventFeedViewModel @Inject constructor(
     private val _loading: MutableLiveData<Int> = MutableLiveData(0)
     private val _error: MutableLiveData<UiText> = MutableLiveData()
     private val _events: MutableLiveData<List<EventEntity>> = MutableLiveData()
-    private val _networkConnectivity: MutableLiveData<Boolean> = MutableLiveData()
 
     val loading: LiveData<Boolean>
         get() = _loading.map { it > 0 }
@@ -37,30 +36,9 @@ class EventFeedViewModel @Inject constructor(
         get() = _error
     val events: LiveData<List<EventEntity>>
         get() = _events
-    val networkConnectivity: LiveData<Boolean>
-        get() = _networkConnectivity
 
     init {
-        viewModelScope.launch {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                networkConnectivityObserver.observe().collect { status ->
-                    val hasConnection = status.hasConnection()
-                    _networkConnectivity.value = hasConnection
-                }
-            } else {
-                _networkConnectivity.value = true
-            }
-        }
         fetchEvents()
-    }
-
-    private suspend fun <T : Resource<*>> Flow<T>.collectLoading(collector: FlowCollector<T>) = collect { value ->
-        if (value is Resource.Loading<*>) {
-            _loading.value = _loading.value?.plus(1)
-        } else {
-            _loading.value = _loading.value?.minus(1)
-        }
-        collector.emit(value)
     }
 
     fun fetchEvents() {

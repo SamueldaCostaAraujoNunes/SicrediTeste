@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.samuelnunes.utility_tool_kit.binding.goneIf
 import dagger.hilt.android.AndroidEntryPoint
+import samuelnunes.com.sicrediteste.R
 import samuelnunes.com.sicrediteste.databinding.FragmentEventFeedBinding
+import samuelnunes.com.sicrediteste.presentation.extensions.onTop
 
 @AndroidEntryPoint
 class EventFeedFragment : Fragment() {
@@ -36,7 +38,6 @@ class EventFeedFragment : Fragment() {
         populateEventList()
         loadingState()
         errorNotify()
-        networkState()
     }
 
     private fun populateEventList() {
@@ -57,13 +58,9 @@ class EventFeedFragment : Fragment() {
 
     private fun errorNotify() {
         viewModel.error.observe(viewLifecycleOwner) { error ->
-            Snackbar.make(binding.root, error.toString(requireContext()), Snackbar.LENGTH_SHORT)
-                .show()
+            Snackbar.make(binding.root, error.toString(requireContext()), Snackbar.LENGTH_SHORT).show()
         }
     }
 
-
-    private fun networkState() =
-        viewModel.networkConnectivity.observe(viewLifecycleOwner, binding.tvNetworkState::goneIf)
 
 }

@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.databinding.FragmentEventDetailBinding
+import samuelnunes.com.sicrediteste.presentation.MainViewModel
 import timber.log.Timber
 
 
@@ -23,6 +24,7 @@ class EventDetailsFragment : Fragment() {
 
     private val args by navArgs<EventDetailsFragmentArgs>()
     private val viewModel: EventDetailsViewModel by viewModels()
+    private val sharedViewModel: MainViewModel by viewModels()
     private lateinit var binding: FragmentEventDetailBinding
 
     override fun onCreateView(
@@ -66,13 +68,8 @@ class EventDetailsFragment : Fragment() {
                 }
             }
 
-            viewModel.hasNetwork.observe(viewLifecycleOwner) {
+            sharedViewModel.networkConnectivity.observe(viewLifecycleOwner) {
                 binding.btnChecking.isEnabled = it
-                if (!it) Snackbar.make(
-                    binding.root,
-                    samuelnunes.com.sicrediteste.R.string.without_network,
-                    Snackbar.LENGTH_SHORT
-                ).show()
             }
         }
     }

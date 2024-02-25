@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/srl_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context="samuelnunes.com.sicrediteste.presentation.screens.eventFeed.EventFeedFragment">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_network_state"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_events"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorErrorContainer"
-        android:textColor="@color/colorOnErrorContainer"
-        android:textAlignment="center"
-        android:padding="16dp"
-        android:text="@string/without_network"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:itemCount="3"
+        tools:listitem="@layout/event_item_list" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srl_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_events"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:itemCount="3"
-            tools:listitem="@layout/event_item_list" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -12,10 +12,29 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            tools:title="@string/app_name"
+            app:titleTextColor="?attr/colorOnPrimary" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_network_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorErrorContainer"
+            android:padding="16dp"
+            android:text="@string/without_network"
+            android:textAlignment="center"
+            android:textColor="@color/colorOnErrorContainer"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
