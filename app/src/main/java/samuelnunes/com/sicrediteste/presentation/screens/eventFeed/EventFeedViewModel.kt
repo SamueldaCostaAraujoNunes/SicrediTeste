@@ -22,8 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EventFeedViewModel @Inject constructor(
-    private var repository: IEventRepository,
-    private var networkConnectivityObserver: NetworkConnectivityObserver
+    private var repository: IEventRepository
 ) : ViewModel() {
 
     private val _loading: MutableLiveData<Int> = MutableLiveData(0)

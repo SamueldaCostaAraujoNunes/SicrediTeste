@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import samuelnunes.com.sicrediteste.R
 import samuelnunes.com.sicrediteste.data.local.entitys.EventEntity
 import samuelnunes.com.sicrediteste.databinding.FragmentEventDetailBinding
 import samuelnunes.com.sicrediteste.presentation.MainViewModel
@@ -64,7 +64,7 @@ class EventDetailsFragment : Fragment() {
                     startActivity(it.getCreateEventIntent())
                 }
                 fab.setOnClickListener { _ ->
-                    startActivity(Intent.createChooser(it.shareEventIntent(), "Compartilhar texto via"))
+                    startActivity(Intent.createChooser(it.shareEventIntent(), getString(R.string.share_text_by)))
                 }
             }
 

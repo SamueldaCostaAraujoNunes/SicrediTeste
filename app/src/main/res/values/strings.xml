@@ -19,4 +19,6 @@
     <string name="make_a_checkin">Fazer check-in</string>
     <string name="fill_email_hint">Preencha aqui seu email</string>
     <string name="fill_name_hint">Preencha aqui seu nome</string>
+    <string name="share_text_by">Compartilhar texto via</string>
+    <string name="details">Detalhes</string>
 </resources>

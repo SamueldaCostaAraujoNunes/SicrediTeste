@@ -21,7 +21,7 @@ class EventFeedFragment : Fragment() {
     private lateinit var binding: FragmentEventFeedBinding
 
     private val eventListAdapter = EventListAdapter {
-        val direction = EventFeedFragmentDirections.actionEventFeedFragmentToEventDetailsFragment(it.id, it.title ?: "Detalhes")
+        val direction = EventFeedFragmentDirections.actionEventFeedFragmentToEventDetailsFragment(it.id, it.title ?: getString(R.string.details))
         findNavController().navigate(direction)
     }
 
